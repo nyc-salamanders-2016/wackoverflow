@@ -6,7 +6,8 @@ end
 
 #new question form
 get '/questions/new' do
-  erb :'questions/new' if current_user
+  require_user
+  erb :'questions/new'
 end
 
 #create new question
@@ -46,6 +47,9 @@ post '/questions/:id/vote' do
 end
 
 get '/questions/:id/edit' do
+  require_user
+  @question = Question.find_by(id: params[:id])
+  erb :'questions/edit'
 end
 
 put '/questions/:id' do
@@ -54,12 +58,13 @@ end
 
 #create new answer for a question
 get '/questions/:id/answers/new' do
-  @question = Question.find(params[:id])
+  require_user
+  @question = Question.find_by(id: params[:id])
   erb :'answers/new'
 end
 
 post '/questions/:id/answers' do
-  @question = Question.find(params[:id])
+  @question = Question.find_by(id: params[:id])
   @answer = Answer.new(author: current_user,
   body: params[:answer][:body], question: @question)
 
@@ -80,12 +85,13 @@ end
 
 #create new comment for a question
 get '/questions/:id/comments/new' do
-  @question = Question.find(params[:id])
+  require_user
+  @question = Question.find_by(id: params[:id])
   erb :'comments/new'
 end
 
 post '/questions/:id/comments' do
-  @question = Question.find(params[:id])
+ @question = Question.find_by(id: params[:id])
   @answer
   @comment = Comment.new(author: current_user,
   body: params[:comment][:body], commentable: @question)
@@ -100,12 +106,13 @@ end
 
 #create new comment for an answer
 get '/answers/:answer_id/comments/new' do
-  @answer = Answer.find(params[:answer_id])
+  require_user
+  @answer = Answer.find_by(id: params[:answer_id])
   erb :'comments/new'
 end
 
 post '/answers/:answer_id/comments' do
-  @answer = Answer.find(params[:answer_id])
+  @answer = Answer.find_by(id: params[:answer_id])
   @question = @answer.question
   @comment = Comment.new(author: current_user,
   body: params[:comment][:body], commentable: @answer)

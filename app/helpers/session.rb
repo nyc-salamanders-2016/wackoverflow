@@ -9,3 +9,4 @@ end
 def require_user
   redirect '/login' unless current_user
 end
+

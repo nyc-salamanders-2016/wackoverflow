@@ -11,4 +11,8 @@
   </form>
   <p><%= answer.body %></p>
   <p>answered by <a href="/users/<%= answer.author.id %>"><%= answer.author.username %></a></p>
+  <% answer.comments.each do |comment|%>
+    <%= comment.body %> <br>
+  <%end%>
+  <a href='/answers/<%=answer.id%>/comments/new'>Comment on Answer</a>
 </li>

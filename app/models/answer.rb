@@ -8,6 +8,10 @@ class Answer < ActiveRecord::Base
     self.question.chosen_answer == self
   end
 
+  def score
+    self.votes.sum(:value)
+  end
+
   validates :body, presence: true
 
 end

@@ -6,4 +6,8 @@ class Question < ActiveRecord::Base
   has_many :votes, as: :votable
 
   validates :body,:title, presence: true
+
+  def score
+    self.votes.sum(:value)
+  end
 end

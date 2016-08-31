@@ -1,8 +1,16 @@
 <h1><%= @question.title %></h1>
+<form method="post" action='/questions/<%= @question.id %>/vote' class="inline">
+    <button type="submit" name="value" value="+1">upvote</button>
+  </form>
+  <p><%= @question.score %></p>
+  <form method="post" action='/questions/<%= @question.id %>/vote' class="inline">
+    <button type="submit" name="value" value="-1">downvote</button>
+  </form>
 <main><%= @question.body %></main>
 <p>posted by <%=@question.author.username %> at <%=@question.created_at%></p>
-<% @question.comments.each do |comment| %>
-  <%= comment.body %> <br>
+<p><small>comments</small></p>
+<% @question.comments.sort_by(&:score).each do |comment| %>
+  <%= erb :'comments/_comment', locals: {comment:comment} %> <br>
 <%end%>
 
 <ul>

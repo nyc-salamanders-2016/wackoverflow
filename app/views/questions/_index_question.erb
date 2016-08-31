@@ -1,0 +1,12 @@
+<li>
+  <form method="post" action='/questions/<%= question.id %>/vote' class="inline">
+    <button type="submit" name="submit" value="+1">upvote</button>
+  </form>
+  <p><%= question.score %></p>
+  <form method="post" action='/questions/<%= question.id %>/vote' class="inline">
+    <button type="submit" name="submit" value="-1">downvote</button>
+  </form>
+  <h2> <a href="/questions/<%= question.id %>"> <%= question.title %></a></h2>
+  <p>asked by <a href="/users/<%= question.author.id %>"><%= question.author.username %> at <%=question.created_at%></a></p>
+  <p><%= question.answers.count %> answers</p>
+</li>

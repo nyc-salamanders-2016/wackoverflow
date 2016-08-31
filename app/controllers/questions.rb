@@ -1,9 +1,13 @@
 #list of all questions
 get '/questions' do
+  @questions = Question.all
+  erb :'questions/index'
 end
 
 #question details
 get '/questions/:id' do
+  @question = Question.find_by(id: params[:id])
+  erb :'questions/details'
 end
 
 get '/questions/:id/edit' do

@@ -1,9 +1,9 @@
 get '/' do
-  if current_user
-    erb :'users/index'
-  else
-    erb :'index'
-  end
+  # if current_user
+    redirect '/questions'
+  # else
+  #   erb :'index'
+  # end
 end
 
 post '/' do

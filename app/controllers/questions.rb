@@ -6,7 +6,8 @@ end
 
 #new question form
 get '/questions/new' do
-  erb :'questions/new' if current_user
+  require_user
+  erb :'questions/new'
 end
 
 #create new question
@@ -54,6 +55,7 @@ end
 
 #create new answer for a question
 get '/questions/:id/answers/new' do
+  require_user
   @question = Question.find(params[:id])
   erb :'answers/new'
 end
@@ -80,6 +82,7 @@ end
 
 #create new comment for a question
 get '/questions/:id/comments/new' do
+  require_user
   @question = Question.find(params[:id])
   erb :'comments/new'
 end
@@ -100,6 +103,7 @@ end
 
 #create new comment for an answer
 get '/answers/:answer_id/comments/new' do
+  require_user
   @answer = Answer.find(params[:answer_id])
   erb :'comments/new'
 end

@@ -7,10 +7,11 @@
     <button type="submit" name="value" value="-1">downvote</button>
   </form>
 <main><%= @question.body %></main>
-<p>posted by <%=@question.author.username %> at <%=@question.created_at%></p>
+<p>posted by <a href ="/user/<%= @question.author.id%>"><%=@question.author.username %></a> at <%=@question.created_at%></p>
 <p><small>comments</small></p>
 <% @question.comments.sort_by(&:score).each do |comment| %>
   <%= erb :'comments/_comment', locals: {comment:comment} %> <br>
+
 <%end%>
 
 <ul>
@@ -29,3 +30,4 @@
   <% end %>
 </ul>
 <a href='/questions/<%= @question.id %>/answers/new'>Answer Question</a>
+

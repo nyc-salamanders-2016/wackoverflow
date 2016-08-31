@@ -2,17 +2,18 @@
   <% if answer.chosen_answer? %>
     <h2>Best answer selected by user:</h2>
   <% end %>
-  <form method="post" action='/questions/<%= answer.question.id %>/answers/<%= answer.id %>/vote' class="inline">
-    <button type="submit" name="submit" value="+1">upvote</button>
+  <form method="post" action='/answers/<%= answer.id %>/vote' class="inline">
+    <button type="submit" name="value" value="+1">upvote</button>
   </form>
   <p><%= answer.score %></p>
-  <form method="post" action='/questions/<%= answer.question.id %>/answers/<%= answer.id %>/vote' class="inline">
-    <button type="submit" name="submit" value="-1">downvote</button>
+  <form method="post" action='/answers/<%= answer.id %>/vote' class="inline">
+    <button type="submit" name="value" value="-1">downvote</button>
   </form>
   <p><%= answer.body %></p>
   <p>answered by <a href="/users/<%= answer.author.id %>"><%= answer.author.username %></a></p>
-  <% answer.comments.each do |comment|%>
-    <%= comment.body %> <br>
+  <p><small>comments</small></p>
+  <% answer.comments.sort_by(&:score).each do |comment|%>
+    <%= erb :'/comments/_comment', locals: {comment:comment} %>
   <%end%>
   <a href='/answers/<%=answer.id%>/comments/new'>Comment on Answer</a>
 </li>

@@ -1,0 +1,8 @@
+<form method="post" action='/comments/<%= comment.id %>/vote' class="inline">
+  <button type="submit" name="value" value="+1">upvote</button>
+</form>
+<p><%= comment.score %></p>
+<form method="post" action='/comments/<%= comment.id %>/vote' class="inline">
+  <button type="submit" name="value" value="-1">downvote</button>
+</form>
+<%= comment.body %> <br>

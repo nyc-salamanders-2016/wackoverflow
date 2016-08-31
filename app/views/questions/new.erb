@@ -1,0 +1,14 @@
+ <%= erb :_errors %>
+
+<form method="post" action="/questions">
+  <label>Title:</label> <br>
+  <input name="question[title]" type="text" > <br><br>
+
+  <label>Body:</label><br>
+  <textarea  name="question[body]"></textarea><br>
+
+  <input type="submit" value="Submit">
+</form>
+
+
+

@@ -1,0 +1,14 @@
+<li>
+  <% if answer.chosen_answer? %>
+    <h2>Best answer selected by user:</h2>
+  <% end %>
+  <form method="post" action='/questions/<%= answer.question.id %>/answers/<%= answer.id %>/vote' class="inline">
+    <button type="submit" name="submit" value="+1">upvote</button>
+  </form>
+  <p><%= answer.score %></p>
+  <form method="post" action='/questions/<%= answer.question.id %>/answers/<%= answer.id %>/vote' class="inline">
+    <button type="submit" name="submit" value="-1">downvote</button>
+  </form>
+  <p><%= answer.body %></p>
+  <p>answered by <a href="/users/<%= answer.author.id %>"><%= answer.author.username %></a></p>
+</li>

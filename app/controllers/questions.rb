@@ -6,6 +6,8 @@ end
 
 #question details
 get '/questions/:id' do
+  @question = Question.find_by(id: params[:id])
+  erb :'questions/details'
 end
 
 get '/questions/:id/edit' do

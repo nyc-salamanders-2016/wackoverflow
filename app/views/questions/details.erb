@@ -1,0 +1,13 @@
+<h1><%= @question.title %></h1>
+<main><%= @question.body %></main>
+<p>posted by <%=@question.author.username %> at <%=@question.created_at%></p>
+<h2>Answers:</h2>
+<ul>
+  <% if answer = @question.chosen_answer %>
+    <%= erb :'questions/_details_answer', locals: {answer:answer} %>
+  <% end %>
+
+  <% @question.answers.reject(&:chosen_answer?).sort_by(&:score).each do |answer| %>
+    <%= erb :'questions/_details_answer', locals: {answer:answer} %>
+  <% end %>
+</ul>

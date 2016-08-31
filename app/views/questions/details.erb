@@ -1,6 +1,15 @@
 <h1><%= @question.title %></h1>
 <main><%= @question.body %></main>
 <p>posted by <%=@question.author.username %> at <%=@question.created_at%></p>
+<% @question.comments.each do |comment| %>
+  <%= comment.body %> <br>
+<%end%>
+
+<ul>
+    <li>
+       <a href='/questions/<%= @question.id%>/comments/new'>Comment on Question</a>
+    </li>
+</ul>
 <h2>Answers:</h2>
 <ul>
   <% if answer = @question.chosen_answer %>
@@ -11,3 +20,4 @@
     <%= erb :'questions/_details_answer', locals: {answer:answer} %>
   <% end %>
 </ul>
+<a href='/questions/<%= @question.id %>/answers/new'>Answer Question</a>

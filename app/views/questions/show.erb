@@ -1,0 +1,34 @@
+<h1> <%= @question.title %> </h1><br>
+<%= @question.body %><br><br>
+<% @question.comments.each do |comment| %>
+  <%= comment.body %> <br>
+<%end%>
+
+<ul>
+    <li>
+       <a href='/questions/<%= @question.id%>/comments/new'>Comment on Question</a>
+    </li>
+</ul>
+
+
+<% if @answers %>
+  <% @answers.each do |answer| %>
+    <ul>
+      <li>
+      <%= answer.body %><br>
+      <% answer.comments.each do |comment|%>
+        <%= comment.body %> <br>
+      <%end%>
+       <a href='/answers/<%=answer.id%>/comments/new'>Comment on Answer</a>
+      </li>
+    </ul>
+  <% end %>
+<% end %>
+
+<ul>
+  <li>
+    <a href='/questions/<%= @question.id %>/answers/new'>Answer Question</a>
+  </li>
+</ul>
+
+

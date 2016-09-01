@@ -28,13 +28,12 @@
             <li class="pipe-separate t-light-green left">hello <a href="/users/<%=current_user.id%>"><%= current_user.username%></a></li>
             <li class="pipe-separate t-light-green left"><a href="/logout">logout</a></li>
           <% else %>
-            <li class="pipe-separate t-light-green left"><a href="/login">login</a></li>
+            <li class="pipe-separate t-light-green left login-link"><a href="/login">login</a></li>
             <li class="pipe-separate t-light-green left"><a href="/users/new">create account</a></li>
           <% end %>
-        </div>
-
         </ul>
-      </nav>
+      </div>
+    </nav>
       <%= erb :_errors %>
   <%= yield %>
 </body>

@@ -46,4 +46,15 @@ $(document).ready(function() {
       $target.closest('li').remove();
     });
   });
+
+  $(".login-link").click(function(event) {
+    event.preventDefault();
+    var $target = $(event.target);
+    $.ajax({
+      method: "get",
+      url: $target.attr('href')
+    }).done(function(response){
+      $target.closest('nav').append(response);
+    });
+  });
 });

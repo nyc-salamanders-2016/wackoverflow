@@ -1,6 +1,10 @@
 
 get '/login' do
-  erb :'users/login'
+  if request.xhr?
+    erb :'users/_login', layout: false
+  else
+    erb :'users/login'
+  end
 end
 
 

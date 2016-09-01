@@ -36,6 +36,7 @@ get '/questions/:id' do
 end
 
 post '/questions/:id/vote' do
+  require_user
   @question = Question.find_by(id: params[:id])
   vote = Vote.new(votable: @question, value: params[:value], user: current_user)
   if vote.save

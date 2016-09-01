@@ -1,4 +1,5 @@
 post '/comments/:id/vote' do
+  require_user
   comment = Comment.find_by(id: params[:id])
   commentable = comment.commentable
   @question = (commentable.class == Question) ? commentable : commentable.question

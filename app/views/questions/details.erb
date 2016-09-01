@@ -10,11 +10,10 @@
 </form>
 <% end %>
 <p><small>comments</small></p>
-<ul class="votable-container">
-<% @question.comments.sort_by(&:score).reverse.each do |comment| %>
+<% @question.comments.sort_by(&:score).each do |comment| %>
   <%= erb :'comments/_comment', locals: {comment:comment} %> <br>
+
 <%end%>
-</ul>
 
 <% if login? %>
 <ul>
@@ -24,14 +23,13 @@
 </ul>
 <% end %>
 
-
 <h2>Answers:</h2>
-<ul class="votable-container">
-  <% if answer = @question.chosen_answer %>
-    <%= erb :'questions/_details_answer', locals: {answer:answer} %>
+<ul>
+  <% if @question.chosen_answer %>
+    <%= erb :'questions/_details_answer', locals: {answer: @question.chosen_answer} %>
   <% end %>
 
-  <% @question.answers.reject(&:chosen_answer?).sort_by(&:score).reverse.each do |answer| %>
+  <% @question.answers.reject(&:chosen_answer?).sort_by(&:score).each do |answer| %>
     <%= erb :'questions/_details_answer', locals: {answer:answer} %>
   <% end %>
 </ul>

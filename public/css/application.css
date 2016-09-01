@@ -33,10 +33,12 @@ th {
 .score-container {
   float: left;
   margin-right: 5px;
+
 }
 
 .score-container p {
   margin: 5px 0;
+
 }
 
 .no-bullets{
@@ -99,8 +101,7 @@ th {
 }
 
 .score-container{
-    margin: auto;
-    width: 20%;
+    margin-left: 30%;
     padding: 10px;
     text-align: center;
 }
@@ -153,3 +154,80 @@ h1 { color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 35p
     display: block;
     width: 60px;
 }*/
+
+.question-title{
+border-style:solid;
+width: 50%;
+margin: auto;
+
+}
+
+.question-box{
+width: 50%;
+margin: auto;
+}
+
+.question-body{
+
+}
+
+
+
+.delete-question{
+
+  display:inline;
+  margin-right: 60%;
+}
+
+.edit-question{
+  display:inline;
+  padding:5px 15px;
+    background:#ccc;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.buttons {
+/*  border-style :solid;*/
+  margin-left: 60%;
+}
+
+input[type=submit] {
+    padding:5px 15px;
+    background:#ccc;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.comments-title{
+  width:40%;
+  margin:auto;
+}
+
+.question-comment-link {
+  width: 40%;
+    display:inline;
+    padding:5px 15px;
+    background:#ccc;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin-left: 30%;
+}
+
+.question-comments {
+  width: 35%;
+  margin: auto;
+  border-style: solid;
+  border-color: white;
+}
+
+.comments {
+  margin:auto;
+  /*border-style: solid;*/
+}

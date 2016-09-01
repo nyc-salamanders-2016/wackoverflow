@@ -1,16 +1,28 @@
-<div class="container">
-<h1><%= @question.title %></h1>
+
+<h1 class = "question-title"><%= @question.title %></h1>
+
+<!-- following partial has its own div -->
 <%= erb :_item_score, locals: {score: @question.score, route: "/questions/#{@question.id}"} %>
-<main><h3><%= @question.body %></h3></main>
+
+
+<main class = "question-box">
+<h3 class = "question-body"><%= @question.body %></h3>
 <p>posted by <a href ="/user/<%= @question.author.id%>"><%=@question.author.username %></a> at <%=@question.created_at%></p>
+</main>
+
+
 <% if current_user == @question.author %>
-<p><a href="/questions/<%= @question.id%>/edit">Edit Question</a></p>
-<form action= "/questions/<%=@question.id%>" method = "POST">
-   <input type="hidden" name="_method" value="delete">
-   <input type="submit" value="Delete Question">
-</form>
+  <div class= "buttons"
+  <li><a class = "edit-question" href="/questions/<%= @question.id%>/edit">Edit Question</a></li>
+  <form class = "delete-question" action= "/questions/<%=@question.id%>" method = "POST">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Question">
+  </form>
+</div>
 <% end %>
-<p><small>comments</small></p>
+
+
+<p class="comments-title">Comments</p>
 <ul class="comments-container">
   <% @question.comments.sort_by(&:score).reverse.each do |comment| %>
     <%= erb :'comments/_comment', locals: {comment:comment} %> <br>
@@ -19,12 +31,13 @@
 </ul>
 <div class="add-comment-container">
   <% if login? %>
-    <a class="add-comment" href='/questions/<%= @question.id%>/comments/new'>Comment on Question</a>
+    <a class="add-comment question-comment-link" href='/questions/<%= @question.id%>/comments/new'>Comment on Question</a>
   <% end %>
 </div>
 
 
 <ul class="votable-container answers-list">
+
   <h2>Answers:</h2>
   <% if @question.chosen_answer %>
     <%= erb :'questions/_details_answer', locals: {answer:@question.chosen_answer} %>
@@ -39,4 +52,4 @@
   <a href='/questions/<%= @question.id %>/answers/new' class="add-answer">Answer Question</a>
 <% end %>
 </div>
-</div>
+

@@ -1,8 +1,13 @@
+.home{
+  background-color: #d1d1e0;
+}
+
 .container {
   margin: 20px auto;
-  width: 600px;
+  width: 800px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
+  background-color: gray;
 }
 th {
   text-align: left;
@@ -21,6 +26,10 @@ th {
   padding: 1px 0px 0px 0px;
 }
 
+.home-question-title{
+
+  margin-right: 100px;
+}
 .score-container {
   float: left;
   margin-right: 5px;
@@ -62,8 +71,9 @@ th {
     color: white;
 }
 
-.login-title{
+.question{
 
+  width: 90%;
 }
 
  li {
@@ -71,10 +81,21 @@ th {
  }
 .votable-container{
     margin: auto;
-    width: 50%;
+    width: 70%;
     padding: 10px;
     text-align: center;
     border-style: solid;
+}
+
+.index-container{
+    margin: auto;
+    width: 40%;
+    padding: 1px;
+    text-align: center;
+    border-style: solid;
+    border-bottom-style: solid;
+    box-shadow: 10px 10px 5px #888888;
+    background-color: white;
 }
 
 .score-container{
@@ -90,13 +111,35 @@ th {
     text-align: center;
 }
 
+.ask-question{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+}
+
 .dog-photo{
     display: block;
+    border: 1px solid #ddd;
+    border-color: black;
     margin: auto;
-    width: 20%;
-    border-style: solid;
-
+    width:25%;
+    border-radius: 20px;
+    padding: 5px;
 }
+
+.ask-question {
+    display: block;
+    width: 115px;
+    height: 25px;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
 
 .signup{
   display: block;

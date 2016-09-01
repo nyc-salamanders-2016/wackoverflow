@@ -1,13 +1,17 @@
+<div class="home">
 <h1>Welcome to WackOverflow</h1>
-<img class = "dog-photo" width="200" src="http://orig01.deviantart.net/ce79/f/2013/096/f/8/dudley_as_gallagher_by_caseydecker-d60nubj.jpg">
+<img class = "dog-photo" width="200" src="http://orig01.deviantart.net/ce79/f/2013/096/f/8/dudley_as_gallagher_by_caseydecker-d60nubj.jpg"><br>
 
 
-<ul class="votable-container">
+<ul class="index-container">
   <% @questions.each do |question| %>
     <%= erb :'questions/_index_question', locals: {question:question} %>
   <% end %>
 </ul>
-
+<br>
+<div class = "ask-question">
 <% if login? %>
 <a href="/questions/new">Ask a Question</a>
 <% end %>
+</div>
+</div>

@@ -74,8 +74,14 @@ end
 
 delete '/answers/:id' do
   @answer = Answer.find_by(id:params[:id])
-  @answer.destroy
-  redirect "/questions/#{@answer.question_id}"
+  if @answer.author == current_user
+    @answer.destroy
+  end
+  if request.xhr?
+    ''
+  else
+    redirect "/questions/#{answer.question_id}"
+  end
 end
 
 patch '/answers/:id' do

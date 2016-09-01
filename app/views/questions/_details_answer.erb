@@ -19,10 +19,10 @@
 
   <p>answered by <a href="/users/<%= answer.author.id %>"><%= answer.author.username %></a></p>
   <% if current_user == answer.author %>
-  <p><a href="/answers/<%= answer.id%>/edit" class="edit-link">Edit Answer</a></p>
-   <form action= "/answers/<%=answer.id%>" method = "POST">
-   <input type="hidden" name="_method" value="delete">
-   <input type="submit"value="Delete Answer">
+    <p><a href="/answers/<%= answer.id%>/edit" class="edit-link">Edit Answer</a></p>
+    <form action= "/answers/<%=answer.id%>" method = "POST" class="delete-form">
+     <input type="hidden" name="_method" value="delete">
+     <input type="submit"value="Delete Answer">
   </form>
   <% end %>
 

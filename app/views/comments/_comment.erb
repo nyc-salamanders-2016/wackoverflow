@@ -1,15 +1,14 @@
 <li>
   <%= erb :_item_score, locals: {score: comment.score, route: "/comments/#{comment.id}"} %>
-  <%= comment.body %> <br>
+  <p class='body-text'><%= comment.body %> </p>
   <p>commented by <a href="/users/<%= comment.author.id%>"><%= comment.author.username %></a></p>
 
   <% if current_user == comment.author %>
-  <p><a href="/comments/<%= comment.id%>/edit">Edit Comment</a></p>
+  <p><a href="/comments/<%= comment.id%>/edit" class="edit-link">Edit Comment</a></p>
    <form action= "/comments/<%=comment.id%>" method = "POST">
    <input type="hidden" name="_method" value="delete">
-   <input type="submit"value="Delete Comment">
+   <input type="submit" value="Delete Comment">
   </form>
   <% end %>
 
 </li>
-

@@ -1,9 +1,9 @@
 <h1><%= @question.title %></h1>
 <%= erb :_item_score, locals: {score: @question.score, route: "/questions/#{@question.id}"} %>
-<main><%= @question.body %></main>
+<p class="body-text"><%= @question.body %></p>
 <p>posted by <a href ="/user/<%= @question.author.id%>"><%=@question.author.username %></a> at <%=@question.created_at%></p>
 <% if current_user == @question.author %>
-<p><a href="/questions/<%= @question.id%>/edit">Edit Question</a></p>
+<p><a href="/questions/<%= @question.id%>/edit" class="edit-link">Edit Question</a></p>
 <form action= "/questions/<%=@question.id%>" method = "POST">
    <input type="hidden" name="_method" value="delete">
    <input type="submit"value="Delete Question">

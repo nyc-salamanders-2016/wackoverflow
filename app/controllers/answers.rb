@@ -5,7 +5,12 @@ get '/answers/:answer_id/edit' do
   if current_user != @answer.author
     redirect "/questions/#{@question.id}"
   end
-  erb :'answers/edit'
+
+  if request.xhr?
+    erb :'answers/edit', layout: false
+  else
+    erb :'answers/edit'
+  end
 end
 
 post '/answers/:answer_id' do
@@ -13,7 +18,11 @@ post '/answers/:answer_id' do
   @question = @answer.question
   @answer.update(body: params[:answer][:body])
   if @answer.save
-    redirect "/questions/#{@question.id}"
+    if request.xhr?
+      "<p class='body-text'>#{@answer.body}</p>"
+    else
+      redirect "/questions/#{@question.id}"
+    end
   else
     @errors = @answer.errors.full_messages
     erb :'answer/edit'

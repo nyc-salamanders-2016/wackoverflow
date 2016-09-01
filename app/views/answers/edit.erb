@@ -1,6 +1,6 @@
  <%= erb :_errors %>
 
-<form method="POST" action="/answers/<%=@answer.id %>">
+<form method="POST" action="/answers/<%=@answer.id %>" class="edit-form">
   <label>Body:</label><br>
   <textarea rows = "5" cols="50" name="answer[body]"><%= @answer.body %></textarea><br>
   <input type="submit" value="Submit">

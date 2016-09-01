@@ -59,7 +59,7 @@ end
 
 delete '/comments/:id' do
   @comment = Comment.find_by(id: params[:id])
-  if @comment.author == current_user
+  if @comment && @comment.author == current_user
     @comment.destroy
   end
   if request.xhr?

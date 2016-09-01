@@ -33,7 +33,11 @@ end
 get '/answers/:answer_id/comments/new' do
   require_user
   @answer = Answer.find_by(id: params[:answer_id])
-  erb :'comments/new'
+  if request.xhr?
+    erb :'comments/new', layout: false
+  else
+    erb :'comments/new'
+  end
 end
 
 post '/answers/:answer_id/comments' do
@@ -42,7 +46,11 @@ post '/answers/:answer_id/comments' do
   @comment = Comment.new(author: current_user,
   body: params[:comment][:body], commentable: @answer)
   if @comment.save
-    redirect "/questions/#{@question.id}"
+    if request.xhr?
+      erb :'comments/_comment', layout: false, locals: {comment: @comment}
+    else
+      redirect "/questions/#{@question.id}"
+    end
   else
     @errors = @comment.errors.full_messages
     erb :'comments/new'

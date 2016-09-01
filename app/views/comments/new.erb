@@ -1,9 +1,7 @@
- <%= erb :_errors %>
-
 <% if @answer %>
-<form method="post" action="/answers/<%= @answer.id%>/comments">
+  <form method="post" action="/answers/<%= @answer.id%>/comments" class="new-comment-form">
 <% elsif @question %>
-<form method="post" action="/questions/<%= @question.id%>/comments">
+  <form method="post" action="/questions/<%= @question.id%>/comments" class="new-comment-form">
 <% end %>
   <label>Comment:</label><br>
   <textarea  name="comment[body]"></textarea><br>

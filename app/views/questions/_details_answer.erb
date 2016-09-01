@@ -26,12 +26,14 @@
   <% end %>
 
   <p><small>comments</small></p>
-  <ul class=".votable-container">
+  <ul class="votable-container comments-container">
   <% answer.comments.sort_by(&:score).reverse.each do |comment|%>
     <%= erb :'/comments/_comment', locals: {comment:comment} %>
   <%end%>
   </ul>
   <% if login? %>
-  <a href='/answers/<%=answer.id%>/comments/new'>Comment on Answer</a>
+  <div class="add-comment-container">
+  <a href='/answers/<%=answer.id%>/comments/new' class="add-comment">Comment on Answer</a>
+  </div>
   <% end %>
 </li>

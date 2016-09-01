@@ -61,3 +61,10 @@ post '/answers/:id/vote' do
     end
   end
 end
+
+
+delete '/answers/:id' do
+  @answer = Answer.find_by(id:params[:id])
+  @answer.destroy
+  redirect "/questions/#{answer.question_id}"
+end

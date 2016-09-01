@@ -29,3 +29,43 @@ th {
 .score-container p {
   margin: 5px 0;
 }
+
+.no-bullets{
+    list-style-type: none;
+    margin: 0;
+    padding: 14px 16px;
+    background-color: #f1f1f1;
+}
+
+/*.pipe-separate {
+  float: left;
+}*/
+.pipe-separate{
+  display: inline;
+}
+
+.pipe-separate a {
+    color: #000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+.pipe-separate a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pipe-separate a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+.login-title{
+
+}
+/*li a {
+    display: block;
+    width: 60px;
+}*/

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $(".votable-container").on('submit', '.vote-form', function (event) {
+  $(".votable-container, .score-container").on('submit', '.vote-form', function (event) {
     event.preventDefault();
     var $target = $(event.target)
     $.ajax({
@@ -58,7 +58,7 @@ $(document).ready(function() {
     });
   });
 
-  $(".votable-container").on('click','#question-comment', function (event){
+  $(".add-comment").click( function (event) {
     event.preventDefault();
     console.log("hi")
     var $target = $(event.target);

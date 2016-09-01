@@ -17,11 +17,7 @@
 <%end%>
 
 <% if login? %>
-<ul class = "question-comment-container">
-    <li>
-       <a id = "question-comment" href='/questions/<%= @question.id%>/comments/new'>Comment on Question</a>
-    </li>
-</ul>
+  <a class="add-comment" href='/questions/<%= @question.id%>/comments/new'>Comment on Question</a>
 <% end %>
 
 

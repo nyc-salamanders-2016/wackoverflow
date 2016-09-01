@@ -1,11 +1,5 @@
 <h1><%= @question.title %></h1>
-<form method="post" action='/questions/<%= @question.id %>/vote' class="inline">
-    <button type="submit" name="value" value="+1">upvote</button>
-  </form>
-  <p><%= @question.score %></p>
-  <form method="post" action='/questions/<%= @question.id %>/vote' class="inline">
-    <button type="submit" name="value" value="-1">downvote</button>
-  </form>
+<%= erb :_item_score, locals: {score: @question.score, route: "/questions/#{@question.id}"} %>
 <main><%= @question.body %></main>
 <p>posted by <a href ="/user/<%= @question.author.id%>"><%=@question.author.username %></a> at <%=@question.created_at%></p>
 <p><small>comments</small></p>

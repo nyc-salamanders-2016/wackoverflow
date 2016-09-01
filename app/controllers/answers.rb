@@ -3,7 +3,7 @@ post '/answers/:id/vote' do
   @question = answer.question
   vote = Vote.new(votable: answer, value: params[:value], user: current_user)
   if vote.save
-    redirect "/questions/#{@question.id}"
+    redirect redirect request.HTTP_REFERER
   else
     @errors = vote.errors.full_messages
     erb :'questions/details'

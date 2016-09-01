@@ -4,7 +4,7 @@ post '/comments/:id/vote' do
   @question = (commentable.class == Question) ? commentable : commentable.question
   vote = Vote.new(votable: comment, value: params[:value], user: current_user)
   if vote.save
-    redirect "/questions/#{@question.id}"
+    redirect request.HTTP_REFERER
   else
     @errors = vote.errors.full_messages
     erb :'questions/details'

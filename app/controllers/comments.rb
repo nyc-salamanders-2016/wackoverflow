@@ -27,9 +27,14 @@ get '/comments/:id/edit' do
   @commentable = @comment.commentable
   @commentable = @commentable.question if @comment.commentable_type == "Answer"
   if current_user != @comment.author
+    status 400
     redirect "/questions/#{@commentable.id}"
   end
-  erb :'comments/edit'
+  if request.xhr?
+    erb :'comments/edit', layout: false
+  else
+    erb :'comments/edit'
+  end
 end
 
 post '/comments/:id' do
@@ -37,10 +42,14 @@ post '/comments/:id' do
   @commentable = @comment.commentable
   @comment.update(body: params[:comment][:body])
   if @comment.save
-    if @comment.commentable_type == "Question"
-    redirect "/questions/#{@commentable.id}"
+    if request.xhr?
+      "<p class='body-text'>#{@comment.body}</p>"
     else
-    redirect "/questions/#{@commentable.question.id}"
+      if @comment.commentable_type == "Question"
+      redirect "/questions/#{@commentable.id}"
+      else
+      redirect "/questions/#{@commentable.question.id}"
+      end
     end
   else
     @errors = @comment.errors.full_messages

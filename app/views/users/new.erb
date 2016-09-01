@@ -1,13 +1,5 @@
 <h2>Create your account!</h2>
 
-<% if @errors %>
-  <ul>
-    <% @errors.each do |error| %>
-      <li><%= error %></li>
-    <% end %>
-  </ul>
-<% end %>
-
 <form action="/users" method="POST">
   <label for="username">Username:</label>
   <input type="text" name="user[username]"><br>

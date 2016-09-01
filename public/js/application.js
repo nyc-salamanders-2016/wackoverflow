@@ -57,4 +57,17 @@ $(document).ready(function() {
       $target.closest('nav').append(response);
     });
   });
+
+  $(".votable-container").on('click','#question-comment', function (event){
+    event.preventDefault();
+    console.log("hi")
+    var $target = $(event.target);
+    // $.ajax({
+    //   method:
+    //   url:
+
+    // })
+  })
 });
+
+

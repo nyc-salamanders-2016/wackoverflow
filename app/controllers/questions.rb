@@ -100,7 +100,11 @@ end
 get '/questions/:id/comments/new' do
   require_user
   @question = Question.find_by(id: params[:id])
+  if request.xhr?
+  else
+
   erb :'comments/new'
+  end
 end
 
 post '/questions/:id/comments' do

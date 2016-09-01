@@ -13,7 +13,7 @@ $(document).ready(function() {
     });
   });
 
-  $(".votable-container").on('click', '.edit-link', function (event) {
+  $(".votable-container, .comments-container").on('click', '.edit-link', function (event) {
     event.preventDefault();
     var $target = $(event.target);
     $.ajax({

@@ -1,0 +1,9 @@
+<div class='score-container'>
+<form method="post" action='<%= route %>/vote' class="inline">
+  <button type="submit" name="value" value="+1" class="fa fa-sort-asc vote-button"></button>
+</form>
+<p><%= score %></p>
+<form method="post" action='<%= route %>/vote' class="inline">
+  <button type="submit" name="value" value="-1" class="fa fa-sort-desc vote-button"></button>
+</form>
+</div>

@@ -2,13 +2,7 @@
   <% if answer.chosen_answer? %>
     <h2>Best answer selected by user:</h2>
   <% end %>
-  <form method="post" action='/answers/<%= answer.id %>/vote' class="inline">
-    <button type="submit" name="value" value="+1">upvote</button>
-  </form>
-  <p><%= answer.score %></p>
-  <form method="post" action='/answers/<%= answer.id %>/vote' class="inline">
-    <button type="submit" name="value" value="-1">downvote</button>
-  </form>
+  <%= erb :_item_score, locals: {score: answer.score, route: "/answers/#{answer.id}"} %>
   <p><%= answer.body %></p>
   <p>answered by <a href="/users/<%= answer.author.id %>"><%= answer.author.username %></a></p>
   <p><small>comments</small></p>

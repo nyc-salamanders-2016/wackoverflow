@@ -4,6 +4,16 @@
   <% end %>
   <%= erb :_item_score, locals: {score: answer.score, route: "/answers/#{answer.id}"} %>
   <p><%= answer.body %></p>
+
+  <% if current_user == answer.question.author && !answer.chosen_answer? %>
+
+    <form action= "/answers/<%=answer.id%>" method = "POST">
+      <input type="hidden" name="_method" value="patch">
+      <input type="submit" value="Choose as best answer">
+    </form>
+
+  <% end %>
+
   <p>answered by <a href="/users/<%= answer.author.id %>"><%= answer.author.username %></a></p>
   <% if current_user == answer.author %>
   <p><a href="/answers/<%= answer.id%>/edit">Edit Answer</a></p>

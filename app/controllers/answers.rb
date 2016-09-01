@@ -66,5 +66,14 @@ end
 delete '/answers/:id' do
   @answer = Answer.find_by(id:params[:id])
   @answer.destroy
-  redirect "/questions/#{answer.question_id}"
+  redirect "/questions/#{@answer.question_id}"
+end
+
+patch '/answers/:id' do
+  @answer = Answer.find_by(id:params[:id])
+  @question = @answer.question
+  @question.chosen_answer = @answer
+  @question.save
+  puts "hi"
+  redirect "/questions/#{@answer.question_id}"
 end

@@ -29,3 +29,84 @@ th {
 .score-container p {
   margin: 5px 0;
 }
+
+.no-bullets{
+    list-style-type: none;
+    margin: 0;
+    padding: 14px 16px;
+    background-color: #f1f1f1;
+}
+
+/*.pipe-separate {
+  float: left;
+}*/
+.pipe-separate{
+  display: inline;
+}
+
+.pipe-separate a {
+    color: #000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+.pipe-separate a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pipe-separate a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+.login-title{
+
+}
+
+ li {
+ list-style-type: none;
+ }
+.votable-container{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    border-style: solid;
+}
+
+.score-container{
+    margin: auto;
+    width: 20%;
+    padding: 10px;
+    text-align: center;
+}
+.answer-question{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+}
+
+.dog-photo{
+    display: block;
+    margin: auto;
+    width: 20%;
+    border-style: solid;
+
+}
+
+.signup{
+  display: block;
+  width: 20%;
+  border-style: solid;
+  padding: 20px;
+}
+
+h1 { color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 35px; font-weight: 700; line-height: 64px; margin: 0 0 0; padding: 20px 30px; text-align: center; text-transform: uppercase; }
+/*li a {
+    display: block;
+    width: 60px;
+}*/

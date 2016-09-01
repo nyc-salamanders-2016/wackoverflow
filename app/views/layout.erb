@@ -22,14 +22,14 @@
     <div>
       <nav class="clearfix mar-b-1">
         <ul class="no-bullets no-margin no-padding right">
-          <li class="pipe-separate t-light-green left"><a href="/">home</a></li>
+          <li class="pipe-separate t-light-green left"><a href="/">Home</a></li>
 
           <% if current_user %>
-            <li class="pipe-separate t-light-green left">hello <a href="/users/<%=current_user.id%>"><%= current_user.username%></a></li>
-            <li class="pipe-separate t-light-green left"><a href="/logout">logout</a></li>
+            <li class="pipe-separate t-light-green left"> <a href="/users/<%=current_user.id%>"><%= current_user.username%></a></li>
+            <li class="pipe-separate t-light-green left"><a href="/logout">Logout</a></li>
           <% else %>
-            <li class="pipe-separate t-light-green left login-link"><a href="/login">login</a></li>
-            <li class="pipe-separate t-light-green left"><a href="/users/new">create account</a></li>
+            <li class="pipe-separate t-light-green left login-link"><a href="/login">Login</a></li>
+            <li class="pipe-separate t-light-green left"><a href="/users/new">Create account</a></li>
           <% end %>
         </ul>
       </div>

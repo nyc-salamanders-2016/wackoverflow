@@ -7,3 +7,7 @@
     <%= erb :'questions/_index_question', locals: {question:question} %>
   <% end %>
 </ul>
+
+<% if login? %>
+<a href="/questions/new">Ask a Question</a>
+<% end %>

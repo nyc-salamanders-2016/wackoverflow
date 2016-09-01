@@ -92,7 +92,6 @@ post '/questions/:id/answers' do
     @errors = @answers.errors.full_messages
     erb :'answers/new'
   end
-
 end
 
 
@@ -115,4 +114,11 @@ post '/questions/:id/comments' do
     @errors = @answers.errors.full_messages
     erb :'answers/new'
   end
+end
+
+delete '/questions/:id' do
+  require_user
+  @question = Question.find_by(id: params[:id])
+  @question.destroy
+  redirect "/questions"
 end

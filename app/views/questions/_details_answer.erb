@@ -5,12 +5,21 @@
   <%= erb :_item_score, locals: {score: answer.score, route: "/answers/#{answer.id}"} %>
   <p><%= answer.body %></p>
   <p>answered by <a href="/users/<%= answer.author.id %>"><%= answer.author.username %></a></p>
+  <% if current_user == answer.author %>
   <p><a href="/answers/<%= answer.id%>/edit">Edit Answer</a></p>
+   <form action= "/answers/<%=answer.id%>" method = "POST">
+   <input type="hidden" name="_method" value="delete">
+   <input type="submit"value="Delete Answer">
+  </form>
+  <% end %>
+
   <p><small>comments</small></p>
   <ul class=".votable-container">
   <% answer.comments.sort_by(&:score).reverse.each do |comment|%>
     <%= erb :'/comments/_comment', locals: {comment:comment} %>
   <%end%>
   </ul>
+  <% if login? %>
   <a href='/answers/<%=answer.id%>/comments/new'>Comment on Answer</a>
+  <% end %>
 </li>

@@ -2,13 +2,4 @@
 <h1>Wack Overflow!</h1>
 <h3>LOG IN</h3>
 
-<%= erb :_errors %>
-
-<form action="/" method="POST">
-  <label for="username">Username:</label>
-  <input type="text" name="user[username]"><br>
-  <label for="password">Password:</label>
-  <input type="password" name="user[password]" >
-  <br>
-  <input type="submit" value="LOG IN">
-</form>
+<%= erb :'users/_login' %>

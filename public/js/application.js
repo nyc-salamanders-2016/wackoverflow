@@ -35,4 +35,26 @@ $(document).ready(function() {
       $target.replaceWith(response);
     });
   });
+
+  $(".votable-container").on('submit', '.delete-form', function(event) {
+    event.preventDefault();
+    var $target = $(event.target);
+    $.ajax({
+      method: "delete",
+      url: $target.attr('action')
+    }).done(function(response){
+      $target.closest('li').remove();
+    });
+  });
+
+  $(".login-link").click(function(event) {
+    event.preventDefault();
+    var $target = $(event.target);
+    $.ajax({
+      method: "get",
+      url: $target.attr('href')
+    }).done(function(response){
+      $target.closest('nav').append(response);
+    });
+  });
 });

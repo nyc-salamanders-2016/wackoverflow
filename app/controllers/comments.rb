@@ -59,11 +59,17 @@ end
 
 delete '/comments/:id' do
   @comment = Comment.find_by(id: params[:id])
-  @comment.destroy
-  if @comment.commentable_type == "Question"
-  redirect "/questions/#{@comment.commentable.id}"
+  if @comment.author == current_user
+    @comment.destroy
+  end
+  if request.xhr?
+    ''
   else
-    redirect "/questions/#{@comment.commentable.question.id}"
+    if @comment.commentable_type == "Question"
+      redirect "/questions/#{@comment.commentable.id}"
+    else
+      redirect "/questions/#{@comment.commentable.question.id}"
+    end
   end
 end
 

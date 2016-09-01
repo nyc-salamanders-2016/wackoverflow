@@ -24,11 +24,13 @@ end
 get '/comments/:id/edit' do
   require_user
   @comment = Comment.find_by(id: params[:id])
-  @commentable = @comment.commentable
-  @commentable = @commentable.question if @comment.commentable_type == "Answer"
-  if current_user != @comment.author
-    status 400
-    redirect "/questions/#{@commentable.id}"
+  if @comment
+    @commentable = @comment.commentable
+    @commentable = @commentable.question if @comment.commentable_type == "Answer"
+    if current_user != @comment.author
+      status 400
+      redirect "/questions/#{@commentable.id}"
+    end
   end
   if request.xhr?
     erb :'comments/edit', layout: false

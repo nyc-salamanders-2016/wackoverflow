@@ -1,5 +1,5 @@
 .home{
-  background-color: #d1d1e0;
+  background-color: #C1DEE8;
 }
 
 .container {
@@ -7,7 +7,7 @@
   width: 800px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
-  background-color: gray;
+  background-color: #C1DEE8;
 }
 th {
   text-align: left;
@@ -86,7 +86,7 @@ th {
     width: 70%;
     padding: 10px;
     text-align: center;
-    border-style: solid;
+
 }
 
 .index-container{
@@ -133,7 +133,7 @@ th {
     display: block;
     width: 115px;
     height: 25px;
-    background: #4E9CAF;
+    background: #007399;
     padding: 10px;
     text-align: center;
     border-radius: 5px;
@@ -156,7 +156,6 @@ h1 { color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 35p
 }*/
 
 .question-title{
-border-style:solid;
 width: 50%;
 margin: auto;
 
@@ -182,11 +181,12 @@ margin: auto;
 .edit-question{
   display:inline;
   padding:5px 15px;
-    background:#ccc;
+    background:#007399;
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px;
+    color:white;
 }
 
 .buttons {
@@ -196,11 +196,12 @@ margin: auto;
 
 input[type=submit] {
     padding:5px 15px;
-    background:#ccc;
+    background:#007399;
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px;
+    color: white;
 }
 
 .comments-title{
@@ -212,22 +213,94 @@ input[type=submit] {
   width: 40%;
     display:inline;
     padding:5px 15px;
-    background:#ccc;
+    background:#007399;
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px;
     margin-left: 30%;
+    color:white;
 }
 
 .question-comments {
   width: 35%;
   margin: auto;
   border-style: solid;
-  border-color: white;
+  border-color: #C1DEE8;;
 }
 
 .comments {
   margin:auto;
-  /*border-style: solid;*/
+  font-style: italic;
+  font-size: 15px;  /*border-style: solid;*/
+}
+
+.edit-comment{
+    display:inline;
+  padding:5px 15px;
+    background:#007399;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color:white;
+}
+
+.body-text{
+  width: 20%;
+  margin: auto;
+  padding-top: 10px;
+}
+
+.commented {
+  margin-left: 60%;
+}
+.answered-comments {
+  width:50%;
+  margin:auto;
+}
+
+.answer-container {
+  border-style: solid;
+  border-color: grey;
+  max-width: 60%;
+  margin:auto;
+  padding-bottom: 15px;
+}
+
+.comment-answer-link{
+  display:inline;
+  padding:5px 15px;
+    background:#007399;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color:white;
+}
+
+.add-answer {
+  display:inline;
+  padding:5px 15px;
+    background:#007399;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color:white;
+    border-spacing: 5px;
+}
+
+.new-answer {
+  padding-top: 10px;
+}
+
+nav{
+  position: fixed;
+}
+
+.question-comment-new{
+  margin-top: 10px;
+  width:50%;
+  margin-left: 30%;
 }

@@ -24,11 +24,6 @@ post '/questions' do
 
 end
 
-# #question details
-# before '/questions/:id' do
-#   pass if request.path_info.match /new/
-#   # @question = find_and_ensure_entry(params[:id])
-# end
 
 get '/questions/:id' do
   @question = Question.find_by(id: params[:id])
@@ -49,10 +44,23 @@ end
 get '/questions/:id/edit' do
   require_user
   @question = Question.find_by(id: params[:id])
+  if current_user != @question.author
+    redirect "/questions/#{@question.id}"
+  end
   erb :'questions/edit'
+
 end
 
-put '/questions/:id' do
+post '/questions/:id' do
+  require_user
+  @question = Question.find_by(id: params[:id])
+  @question.update(title: params[:question][:title], body: params[:question][:body])
+  if @question.save
+    redirect "/questions/#{@question.id}"
+  else
+    @errors = @questions.errors.full_messages
+    erb :'questions/edit'
+  end
 end
 
 
@@ -77,11 +85,6 @@ post '/questions/:id/answers' do
 
 end
 
-get '/questions/:id/answers/:answer_id/edit' do
-end
-
-put '/questions/:id/answers/:answer_id' do
-end
 
 #create new comment for a question
 get '/questions/:id/comments/new' do
@@ -101,25 +104,5 @@ post '/questions/:id/comments' do
   else
     @errors = @answers.errors.full_messages
     erb :'answers/new'
-  end
-end
-
-#create new comment for an answer
-get '/answers/:answer_id/comments/new' do
-  require_user
-  @answer = Answer.find_by(id: params[:answer_id])
-  erb :'comments/new'
-end
-
-post '/answers/:answer_id/comments' do
-  @answer = Answer.find_by(id: params[:answer_id])
-  @question = @answer.question
-  @comment = Comment.new(author: current_user,
-  body: params[:comment][:body], commentable: @answer)
-  if @comment.save
-    redirect "/questions/#{@question.id}"
-  else
-    @errors = @comment.errors.full_messages
-    erb :'comments/new'
   end
 end

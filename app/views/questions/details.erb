@@ -2,6 +2,7 @@
 <%= erb :_item_score, locals: {score: @question.score, route: "/questions/#{@question.id}"} %>
 <main><%= @question.body %></main>
 <p>posted by <a href ="/user/<%= @question.author.id%>"><%=@question.author.username %></a> at <%=@question.created_at%></p>
+<p><a href="/questions/<%= @question.id%>/edit">Edit Question</a></p>
 <p><small>comments</small></p>
 <% @question.comments.sort_by(&:score).each do |comment| %>
   <%= erb :'comments/_comment', locals: {comment:comment} %> <br>

@@ -1,3 +1,45 @@
+get '/answers/:answer_id/edit' do
+  require_user
+  @answer = Answer.find_by(id: params[:answer_id])
+  @question = @answer.question
+  if current_user != @answer.author
+    redirect "/questions/#{@question.id}"
+  end
+  erb :'answers/edit'
+end
+
+post '/answers/:answer_id' do
+  @answer = Answer.find_by(id: params[:answer_id])
+  @question = @answer.question
+  @answer.update(body: params[:answer][:body])
+  if @answer.save
+    redirect "/questions/#{@question.id}"
+  else
+    @errors = @answer.errors.full_messages
+    erb :'answer/edit'
+  end
+end
+
+#create new comment for an answer
+get '/answers/:answer_id/comments/new' do
+  require_user
+  @answer = Answer.find_by(id: params[:answer_id])
+  erb :'comments/new'
+end
+
+post '/answers/:answer_id/comments' do
+  @answer = Answer.find_by(id: params[:answer_id])
+  @question = @answer.question
+  @comment = Comment.new(author: current_user,
+  body: params[:comment][:body], commentable: @answer)
+  if @comment.save
+    redirect "/questions/#{@question.id}"
+  else
+    @errors = @comment.errors.full_messages
+    erb :'comments/new'
+  end
+end
+
 post '/answers/:id/vote' do
   answer = Answer.find_by(id: params[:id])
   @question = answer.question

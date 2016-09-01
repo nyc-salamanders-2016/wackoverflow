@@ -5,6 +5,7 @@
   <%= erb :_item_score, locals: {score: answer.score, route: "/answers/#{answer.id}"} %>
   <p><%= answer.body %></p>
   <p>answered by <a href="/users/<%= answer.author.id %>"><%= answer.author.username %></a></p>
+  <p><a href="/answers/<%= answer.id%>/edit">Edit Answer</a></p>
   <p><small>comments</small></p>
   <% answer.comments.sort_by(&:score).each do |comment|%>
     <%= erb :'/comments/_comment', locals: {comment:comment} %>

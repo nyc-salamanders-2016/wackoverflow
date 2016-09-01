@@ -4,10 +4,20 @@ post '/comments/:id/vote' do
   @question = (commentable.class == Question) ? commentable : commentable.question
   vote = Vote.new(votable: comment, value: params[:value], user: current_user)
   if vote.save
-    redirect request.HTTP_REFERER
+    if request.xhr?
+      content_type :json
+      {points: comment.score.to_s}.to_json
+    else
+      redirect URI(request.referer).path
+    end
   else
     @errors = vote.errors.full_messages
-    erb :'questions/details'
+    status 400
+    if request.xhr?
+      @errors.to_json
+    else
+      erb :'questions/details'
+    end
   end
 end
 

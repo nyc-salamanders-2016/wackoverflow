@@ -2,7 +2,7 @@
 <img width="200" src="http://orig01.deviantart.net/ce79/f/2013/096/f/8/dudley_as_gallagher_by_caseydecker-d60nubj.jpg">
 
 
-<ul>
+<ul class="votable-container">
   <% @questions.each do |question| %>
     <%= erb :'questions/_index_question', locals: {question:question} %>
   <% end %>

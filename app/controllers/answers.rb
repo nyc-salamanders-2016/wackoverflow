@@ -45,9 +45,19 @@ post '/answers/:id/vote' do
   @question = answer.question
   vote = Vote.new(votable: answer, value: params[:value], user: current_user)
   if vote.save
-    redirect redirect request.HTTP_REFERER
+    if request.xhr?
+      content_type :json
+      {points: answer.score.to_s}.to_json
+    else
+      redirect URI(request.referer).path
+    end
   else
     @errors = vote.errors.full_messages
-    erb :'questions/details'
+    status 400
+    if request.xhr?
+      @errors.to_json
+    else
+      erb :'questions/details'
+    end
   end
 end

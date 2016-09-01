@@ -1,4 +1,6 @@
-<%= erb :_item_score, locals: {score: comment.score, route: "/comments/#{comment.id}"} %>
-<%= comment.body %> <br>
+<li>
+  <%= erb :_item_score, locals: {score: comment.score, route: "/comments/#{comment.id}"} %>
+  <%= comment.body %> <br>
   <p>commented by <a href="/users/<%= comment.author.id%>"><%= comment.author.username %></a></p>
   <p><a href="/comments/<%= comment.id%>/edit">Edit Comment</a></p>
+</li>

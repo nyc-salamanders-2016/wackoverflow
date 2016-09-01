@@ -4,16 +4,12 @@
   <%= comment.body %> <br>
 <%end%>
 
-<ul>
-    <li>
-       <a href='/questions/<%= @question.id%>/comments/new'>Comment on Question</a>
-    </li>
-</ul>
+<a href='/questions/<%= @question.id%>/comments/new'>Comment on Question</a>
 
 
 <% if @answers %>
   <% @answers.each do |answer| %>
-    <ul>
+    <ul class="votable-container">
       <li>
       <%= answer.body %><br>
       <% answer.comments.each do |comment|%>
@@ -25,10 +21,4 @@
   <% end %>
 <% end %>
 
-<ul>
-  <li>
-    <a href='/questions/<%= @question.id %>/answers/new'>Answer Question</a>
-  </li>
-</ul>
-
-
+<a href='/questions/<%= @question.id %>/answers/new'>Answer Question</a>

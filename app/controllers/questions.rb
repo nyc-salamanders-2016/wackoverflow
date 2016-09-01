@@ -79,7 +79,11 @@ end
 get '/questions/:id/answers/new' do
   require_user
   @question = Question.find_by(id: params[:id])
-  erb :'answers/new'
+  if request.xhr?
+    erb :'answers/new', layout: false
+  else
+    erb :'answers/new'
+  end
 end
 
 post '/questions/:id/answers' do
@@ -88,7 +92,11 @@ post '/questions/:id/answers' do
   body: params[:answer][:body], question: @question)
 
   if @answer.save
-    redirect "/questions/#{@question.id}"
+    if request.xhr?
+      erb :'questions/_details_answer', layout: false, locals: { answer: @answer }
+    else
+      redirect "/questions/#{@question.id}"
+    end
   else
     @errors = @answers.errors.full_messages
     erb :'answers/new'
@@ -101,20 +109,23 @@ get '/questions/:id/comments/new' do
   require_user
   @question = Question.find_by(id: params[:id])
   if request.xhr?
+    erb :'comments/new', layout: false
   else
-
-  erb :'comments/new'
+    erb :'comments/new'
   end
 end
 
 post '/questions/:id/comments' do
- @question = Question.find_by(id: params[:id])
-  @answer
+  @question = Question.find_by(id: params[:id])
   @comment = Comment.new(author: current_user,
   body: params[:comment][:body], commentable: @question)
 
   if @comment.save
-    redirect "/questions/#{@question.id}"
+    if request.xhr?
+      erb :'comments/_comment', layout: false, locals: {comment: @comment}
+    else
+      redirect "/questions/#{@question.id}"
+    end
   else
     @errors = @answers.errors.full_messages
     erb :'answers/new'

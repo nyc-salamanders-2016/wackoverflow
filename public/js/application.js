@@ -36,7 +36,7 @@ $(document).ready(function() {
     });
   });
 
-  $(".votable-container").on('submit', '.delete-form', function(event) {
+  $(".votable-container, .comments-container").on('submit', '.delete-form', function(event) {
     event.preventDefault();
     var $target = $(event.target);
     $.ajax({
@@ -60,14 +60,51 @@ $(document).ready(function() {
 
   $(".add-comment").click( function (event) {
     event.preventDefault();
-    console.log("hi")
     var $target = $(event.target);
-    // $.ajax({
-    //   method:
-    //   url:
+    $.ajax({
+      method: "get",
+      url: $target.attr('href')
+    }).done(function(response){
+      $target.after(response)
+    });
+  });
 
-    // })
-  })
+  $(".add-comment-container").on('submit', '.new-comment-form', function(event) {
+    event.preventDefault();
+    var $target = $(event.target);
+    $.ajax({
+      method: $target.attr('method'),
+      url: $target.attr('action'),
+      data: $target.serialize()
+    }).done(function(response){
+      $target.parent().siblings('.comments-container').append(response);
+      $target.remove()
+    });
+  });
+
+  $(".add-answer").click( function (event) {
+    event.preventDefault();
+    var $target = $(event.target);
+    $.ajax({
+      method: "get",
+      url: $target.attr('href')
+    }).done(function(response){
+      $target.after(response)
+    });
+  });
+
+  $(".answer-question").on('submit', '.new-answer-form', function(event) {
+    event.preventDefault();
+    var $target = $(event.target);
+    $.ajax({
+      method: $target.attr('method'),
+      url: $target.attr('action'),
+      data: $target.serialize()
+    }).done(function(response){
+      $('.answers-list').append(response);
+      $target.remove()
+    });
+  });
 });
 
 

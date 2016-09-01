@@ -38,13 +38,15 @@ $(document).ready(function() {
 
   $(".votable-container, .comments-container").on('submit', '.delete-form', function(event) {
     event.preventDefault();
-    var $target = $(event.target);
-    $.ajax({
-      method: "delete",
-      url: $target.attr('action')
-    }).done(function(response){
-      $target.closest('li').remove();
-    });
+    if (confirm("Are you sure you want to delete that forever?")) {
+      var $target = $(event.target);
+      $.ajax({
+        method: "delete",
+        url: $target.attr('action')
+      }).done(function(response){
+        $target.closest('li').remove();
+      });
+    };
   });
 
   $(".login-link").click(function(event) {

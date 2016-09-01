@@ -1,6 +1,8 @@
+<div class ="question">
 <li>
   <%= erb :_item_score, locals: {score: question.score, route: "/questions/#{question.id}"} %>
-  <h2> <a href="/questions/<%= question.id %>"> <%= question.title %></a></h2>
+  <h2> <a class="home-question-title" href="/questions/<%= question.id %>"> <%= question.title %></a></h2>
   <p>asked by <a href="/users/<%= question.author.id %>"><%= question.author.username %> at <%=question.created_at%></a></p>
   <p><%= question.answers.count %> answers</p>
 </li>
+</div>

@@ -1,4 +1,4 @@
-
+<div class="container">
 <h1><%= @question.title %></h1>
 <%= erb :_item_score, locals: {score: @question.score, route: "/questions/#{@question.id}"} %>
 <main><h3><%= @question.body %></h3></main>
@@ -38,4 +38,5 @@
 <% if login? %>
   <a href='/questions/<%= @question.id %>/answers/new' class="add-answer">Answer Question</a>
 <% end %>
+</div>
 </div>

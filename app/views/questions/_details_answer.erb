@@ -1,3 +1,4 @@
+<div class = answer-container>
 <li>
   <% if answer.chosen_answer? %>
     <h3>Best answer selected by user:</h3>
@@ -25,7 +26,7 @@
   </form>
   <% end %>
 
-  <p><small>comments</small></p>
+
   <ul class="votable-container comments-container">
   <% answer.comments.sort_by(&:score).reverse.each do |comment|%>
     <%= erb :'/comments/_comment', locals: {comment:comment} %>
@@ -33,7 +34,8 @@
   </ul>
   <% if login? %>
   <div class="add-comment-container">
-  <a href='/answers/<%=answer.id%>/comments/new' class="add-comment">Comment on Answer</a>
+  <a class = "comment-answer-link" href='/answers/<%=answer.id%>/comments/new' class="add-comment">Comment on Answer</a>
   </div>
   <% end %>
 </li>
+</div>

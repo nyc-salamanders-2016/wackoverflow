@@ -2,6 +2,6 @@
 
 <form method="POST" action="/comments/<%=@comment.id %>" class="edit-form">
   <label>Body:</label><br>
-  <textarea rows = "5" cols="50" name="comment[body]"><%= @comment.body %></textarea><br>
+  <textarea rows = "5" cols="30" name="comment[body]"><%= @comment.body %></textarea><br>
   <input type="submit" value="Submit">
 </form>

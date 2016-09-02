@@ -7,7 +7,7 @@
 
 
   <% if current_user == comment.author %>
-  <p><a class = "edit-comment" href="/comments/<%= comment.id%>/edit" class="edit-link">Edit Comment</a></p>
+  <p><a class = "edit-link" href="/comments/<%= comment.id%>/edit">Edit Comment</a></p>
   <form action= "/comments/<%=comment.id%>" method = "POST" class="delete-form">
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete Comment">

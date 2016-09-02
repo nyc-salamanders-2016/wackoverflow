@@ -19,7 +19,9 @@ $(document).ready(function() {
     $.ajax({
       method: 'get',
       url: $target.attr('href')
+
     }).done(function(response){
+     
       $target.closest('li').find('.body-text').replaceWith(response);
     });
   });

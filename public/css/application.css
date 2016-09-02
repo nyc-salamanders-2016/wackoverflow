@@ -235,7 +235,7 @@ input[type=submit] {
   font-size: 15px;  /*border-style: solid;*/
 }
 
-.edit-comment{
+.edit-link{
     display:inline;
   padding:5px 15px;
     background:#007399;
@@ -268,7 +268,7 @@ input[type=submit] {
   padding-bottom: 15px;
 }
 
-.comment-answer-link{
+.add-comment{
   display:inline;
   padding:5px 15px;
     background:#007399;
